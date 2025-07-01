@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: poc-authentication-autorization-azure-ad
+  cloud:
+    azure:
+      active-directory:
+        profile:
+          tenant-id: <your-Microsoft-Entra-tenant-ID>
+        credential:
+          client-id: <your-application-ID-of-app-apirest>
+        app-id-uri: <your-application-ID-URI-of-app-apirest>
+
+logging:
+  level:
+    org.springframework:
+      security: DEBUG
+      web: DEBUG
+
+# The following configuration is for integrating Swagger UI with Azure Active Directory
+server:
+  forward-headers-strategy: framework # This is required for redirection with HTTPS.
+springdoc:
+  swagger-ui:
+    use-root-path: true
+    oauth:
+      use-pkce-with-authorization-code-grant: false
+
+
